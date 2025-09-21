@@ -8,12 +8,10 @@ const Logincom = () => {
   const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
 
   //usestate
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = usestate("");
-  //not working function
+  // not working function
   // const reset = () => {
-  //   setPassword("");
-  //   setUsername("");
+  //   const usernameref = useRef(null);
+  //   const passwordref = useRef(null);
   // };
   //local vaiables
   const usernameref = useRef(null);
@@ -61,7 +59,7 @@ const Logincom = () => {
               type="text"
               name="username"
               ref={usernameref}
-              autoComplete="off"
+              autoComplete="new-password"
               required
             />
             <br />
@@ -82,9 +80,7 @@ const Logincom = () => {
             <button type="submit" className="submit_btn">
               Login
             </button>
-            {/* <button className="reset" onClick={reset}>
-              Reset
-            </button> */}
+            <button className="reset">Reset</button>
           </div>
         </form>
       </div>
