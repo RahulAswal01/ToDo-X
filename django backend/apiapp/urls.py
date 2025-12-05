@@ -1,0 +1,33 @@
+from django.urls import path
+import apiapp.views as views
+
+urlpatterns=[path("login",views.login,name='login'),
+            # path('user',views.create_user,name='create_user'),
+            path("create_todo_btn_all",views.create_todo_btn_all,name='create_todo_btn_all'),
+            path("create_todo_btn_completed",views.create_todo_btn_completed,name='create_todo_btn_completed'),
+            path("create_todo_btn_in_progress",views.create_todo_btn_in_progress,name='create_todo_btn_in_progress'),
+            path("create_todo_btn_archived",views.create_todo_btn_archived,name='create_todo_btn_archived'),
+            path('inital_call',views.inital_call,name='inital_call'),
+            path('completed',views.completed,name='completed'),
+            path('archived',views.archived,name='archived'),
+            path('in_progress',views.in_progress,name='in_progress'),
+            path('completed_task',views.completed_task,name='completed_task'),
+            path('completed_task_in_progress',views.completed_task_in_progress,name='completed_task_in_progress'),
+            path('completed_task_archived',views.completed_task_archived,name='completed_task_archived'),
+            path('archived_task_non_archived',views.archived_task_non_archived,name='archived_task_non_archived'),
+            path('in_progress_task',views.in_progress_task,name='in_progress_task'),
+            path('in_progress_task_completed',views.in_progress_task_completed,name='in_progress_task_completed'),
+            path('archived_task_completed',views.archived_task_completed,name='archived_task_completed'),
+            path('archived_task_in_progress',views.archived_task_in_progress,name='archived_task_in_progress'),
+            path('archived_task_all',views.archived_task_all,name='archived_task_all'),
+            path('archived_task_archived',views.archived_task_archived,name='archived_task_archived'),
+            path('delete_task_non_archived',views.delete_task_non_archived,name='delete_task_non_archived'), 
+            path('delete_task_in_progress',views.delete_task_in_progress,name='delete_task_in_progress'), 
+            path('delete_task_all',views.delete_task_all,name='delete_task_all'),
+            path('delete_task_completed',views.delete_task_completed,name='delete_task_completed'), 
+            path('delete_task_archived',views.delete_task_archived,name='delete_task_archived'),
+            path('update_task_all',views.update_task_all,name='update_task_all'),
+            path('update_task_completed',views.update_task_completed,name='update_task_completed'),
+            path('update_task_in_progress',views.update_task_in_progress,name='update_task_in_progress'),
+            path('update_task_archived',views.update_task_archived,name='update_task_archived')           
+]
