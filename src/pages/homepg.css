@@ -24,6 +24,7 @@
   font-size: 14px;
   padding: 8px 18px;
   border: none;
+  opacity: 0;
   border-radius: 25px;
   background-color: #0fd7a29b;
   transition: all 0.1s ease-in-out;

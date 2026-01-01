@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import updateTaskAtom from "./recoil/updateTaskAtom";
 import { useRecoilState } from "recoil";
 import btn_manager from "./recoil/btn_manager";
@@ -10,6 +10,7 @@ const Updatetask = () => {
   const [updateTask, setUpdateTask] = useRecoilState(updateTaskAtom);
   const updatetitleref = useRef(null);
   const updatedescref = useRef(null);
+  const [status, setStatus] = useState("");
   const [btnTracker, setBtnTracker] = useRecoilState(btn_manager);
   const [todoApiData, setTodoApiData] = useRecoilState(todoatom);
   const [apiData, setApiData] = useRecoilState(apiDataAtom);
@@ -24,6 +25,7 @@ const Updatetask = () => {
         id: IdTracker,
         title: updatetitleref.current.value,
         desc: updatedescref.current.value,
+        status: status,
       };
       fetch("http://127.0.0.1:8000/update_task_all", {
         method: "PUT",
@@ -143,8 +145,11 @@ const Updatetask = () => {
                 <input
                   className="radio-input"
                   type="radio"
+                  onClick={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                  value="completed"
                   name="status"
-                  id=""
                   required
                 />
                 <label htmlFor="completed">completed</label>
@@ -154,8 +159,11 @@ const Updatetask = () => {
                 <input
                   className="radio-input"
                   type="radio"
+                  onClick={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                  value="in progress"
                   name="status"
-                  id=""
                 />
                 <label htmlFor="in progress">in progress</label>
               </div>
@@ -165,7 +173,10 @@ const Updatetask = () => {
                   className="radio-input"
                   type="radio"
                   name="status"
-                  id=""
+                  onClick={(e) => {
+                    setStatus(e.target.value);
+                  }}
+                  value="archived"
                 />
                 <label htmlFor="archived">archived</label>
               </div>

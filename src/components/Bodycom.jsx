@@ -15,7 +15,7 @@ const Bodycom = () => {
             setText(e.target.value);
             console.log(e.target.value);
           }}
-          placeholder="Search task here.. "
+          placeholder="Search task here with title ... "
           className="c05"
           autoComplete="off"
         />

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import addTaskAtom from "./recoil/addTaskAtom";
 import { useRecoilState } from "recoil";
 import todoatom from "./recoil/todoatom";
@@ -9,6 +9,7 @@ const AddTask = () => {
   const [todoApiData, setTodoApiData] = useRecoilState(todoatom);
   const [apiData, setApiData] = useRecoilState(apiDataAtom);
   const [btnTracker, setBtnTracker] = useRecoilState(btn_manager);
+  const [status, setStatus] = useState("");
   const titleref = useRef(null);
   const descref = useRef(null);
   const addTaskHandler = (e) => {
@@ -16,6 +17,7 @@ const AddTask = () => {
     const data = {
       title: titleref?.current?.value,
       desc: descref?.current?.value,
+      status: status,
     };
     if (btnTracker === "all") {
       fetch("http://127.0.0.1:8000/create_todo_btn_all", {
@@ -128,9 +130,12 @@ const AddTask = () => {
               <div>
                 <input
                   className="radio-input"
+                  onClick={(e) => {
+                    setStatus(e.target.value);
+                  }}
                   type="radio"
                   name="status"
-                  id=""
+                  value={"completed"}
                   required
                 />
                 <label htmlFor="completed">completed</label>
@@ -140,8 +145,11 @@ const AddTask = () => {
                 <input
                   className="radio-input"
                   type="radio"
+                  onClick={(e) => {
+                    setStatus(e.target.value);
+                  }}
                   name="status"
-                  id=""
+                  value={"in progress"}
                 />
                 <label htmlFor="in progress">in progress</label>
               </div>
@@ -150,8 +158,11 @@ const AddTask = () => {
                 <input
                   className="radio-input"
                   type="radio"
+                  onClick={(e) => {
+                    setStatus(e.target.value);
+                  }}
                   name="status"
-                  id=""
+                  value={"archived"}
                 />
                 <label htmlFor="archived">archived</label>
               </div>

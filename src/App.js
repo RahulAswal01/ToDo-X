@@ -6,6 +6,7 @@ import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import userInfoAtom from "./components/recoil/userInfo";
 import React from "react";
+import Signup from "./pages/Signup";
 
 function App() {
   const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
@@ -27,6 +28,10 @@ function App() {
           path="/login"
           element={userInfo === true ? <Homepg /> : <Loginpg />}
         />
+        <Route
+          path="/create_cred"
+          element={userInfo === true ? <Homepg /> : <Signup />}
+        ></Route>
       </Routes>
     </div>
   );

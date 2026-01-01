@@ -25,7 +25,7 @@ def login(request,format=None):
 def create_todo_btn_all(request,format=None):
     title_input = request.data['title']
     desc_input = request.data['desc']
-    status_input = 'in progress'
+    status_input = request.data['status']
     obj = todo(
         title=title_input,
         desc=desc_input,
@@ -53,7 +53,7 @@ def create_todo_btn_all(request,format=None):
 def create_todo_btn_completed(request,format=None):
     title_input = request.data['title']
     desc_input = request.data['desc']
-    status_input = 'in progress'
+    status_input = request.data['status']
     obj = todo(
         title=title_input,
         desc=desc_input,
@@ -82,7 +82,7 @@ def create_todo_btn_completed(request,format=None):
 def create_todo_btn_in_progress(request,format=None):
     title_input = request.data['title']
     desc_input = request.data['desc']
-    status_input = 'in progress'
+    status_input = request.data['status']
     obj = todo(
         title=title_input,
         desc=desc_input,
@@ -110,7 +110,7 @@ def create_todo_btn_in_progress(request,format=None):
 def create_todo_btn_archived(request,format=None):
     title_input = request.data['title']
     desc_input = request.data['desc']
-    status_input = 'in progress'
+    status_input = request.data['status']
     obj = todo(
         title=title_input,
         desc=desc_input,
@@ -567,9 +567,10 @@ def update_task_all(request,format=None):
     task_id = request.data['id']
     task_title = request.data['title']
     task_desc = request.data['desc']
+    task_status = request.data['status']
 
-    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc)
-    all = todo.objects.all().values().count() 
+    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc,status=task_status)
+    all = todo.objects.exclude(status__iexact = 'archived').all().values().count() 
     completed = todo.objects.filter(status__iexact = 'completed').values().count()
     in_progress = todo.objects.filter(status__iexact = 'in progress').values().count()
     archived = todo.objects.filter(status__iexact = 'archived').values().count()
@@ -591,9 +592,10 @@ def update_task_completed(request,format=None):
     task_id = request.data['id']
     task_title = request.data['title']
     task_desc = request.data['desc']
+    task_status = request.data['status']
 
-    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc)
-    all = todo.objects.all().values().count() 
+    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc,status=task_status)
+    all = todo.objects.exclude(status__iexact = 'archived').all().values().count() 
     completed = todo.objects.filter(status__iexact = 'completed').values().count()
     in_progress = todo.objects.filter(status__iexact = 'in progress').values().count()
     archived = todo.objects.filter(status__iexact = 'archived').values().count()
@@ -615,9 +617,10 @@ def update_task_in_progress(request,format=None):
     task_id = request.data['id']
     task_title = request.data['title']
     task_desc = request.data['desc']
+    task_status = request.data['status']
 
-    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc)
-    all = todo.objects.all().values().count() 
+    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc,status=task_status)
+    all = todo.objects.exclude(status__iexact = 'archived').all().values().count() 
     completed = todo.objects.filter(status__iexact = 'completed').values().count()
     in_progress = todo.objects.filter(status__iexact = 'in progress').values().count()
     archived = todo.objects.filter(status__iexact = 'archived').values().count()
@@ -639,9 +642,10 @@ def update_task_archived(request,format=None):
     task_id = request.data['id']
     task_title = request.data['title']
     task_desc = request.data['desc']
+    task_status = request.data['status']
 
-    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc)
-    all = todo.objects.all().values().count() 
+    obj = todo.objects.filter(id=task_id).values().update(title=task_title,desc=task_desc,status=task_status)
+    all = todo.objects.exclude(status__iexact = 'archived').all().values().count() 
     completed = todo.objects.filter(status__iexact = 'completed').values().count()
     in_progress = todo.objects.filter(status__iexact = 'in progress').values().count()
     archived = todo.objects.filter(status__iexact = 'archived').values().count()
